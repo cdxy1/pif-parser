@@ -39,5 +39,5 @@ def copy_data_to_single_file(source_directory, destination_file):
 if __name__ == "__main__":
     source_directory = 'excel_files'
     destination_file = 'merged_data'
-    excel_handler.main_excel(source_directory)
+    excel_handler.main_excel(source_directory, 13)
     copy_data_to_single_file(source_directory, destination_file)
