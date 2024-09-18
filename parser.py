@@ -1,4 +1,5 @@
 import bs4
+import lxml
 from selenium import webdriver
 
 
@@ -10,7 +11,7 @@ def driver_init(url):
 
 def get_html(driver):
     html = driver.page_source
-    soup = bs4.BeautifulSoup(html, "html.parser")
+    soup = bs4.BeautifulSoup(html, "lxml")
     return soup
 
 
