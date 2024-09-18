@@ -41,8 +41,8 @@ dict_of_tags = {"НАЗВАНИЕ ФОНДА":"",
                 }
 
 
-def main_excel(dir_path):
-    for page in range(1, 13):
+def main_excel(dir_path, sheet_num):
+    for page in range(1, sheet_num):
         wb = Workbook()
         if not os.path.exists(dir_path):
             os.mkdir(dir_path)
