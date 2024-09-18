@@ -39,5 +39,5 @@ def copy_data_to_single_file(source_directory, destination_file):
 if __name__ == "__main__":
     source_directory = 'excel_files'
     destination_file = 'merged_data'
-    excel_handler.main_excel(source_directory, 13)
+    excel_handler.main_excel(source_directory, 13, "https://investfunds.ru/funds/?showID=99&cstm=0-3y283xa.1-2&visible_rows=0-3y283xa.1-2")
     copy_data_to_single_file(source_directory, destination_file)

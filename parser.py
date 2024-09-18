@@ -1,12 +1,18 @@
+import os
 import bs4
 import lxml
 from selenium import webdriver
 
 
 def driver_init(url):
-    driver = webdriver.Firefox()
-    driver.get(url)
-    return driver
+    if os.name == "posix":
+        driver = webdriver.Safari()
+        driver.get(url)
+        return driver
+    else:
+        driver = webdriver.Firefox()
+        driver.get(url)
+        return driver
 
 
 def get_html(driver):
