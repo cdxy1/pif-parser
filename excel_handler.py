@@ -41,12 +41,12 @@ dict_of_tags = {"НАЗВАНИЕ ФОНДА":"",
                 }
 
 
-def main_excel(dir_path, sheet_num):
+def main_excel(dir_path, sheet_num, raw_url):
     for page in range(1, sheet_num):
         wb = Workbook()
         if not os.path.exists(dir_path):
             os.mkdir(dir_path)
-        url = f"https://investfunds.ru/funds/?showID=99&cstm=0-3y283xa.1-2&cmp=0-42334.1-zik0zo.2-74.3-1ekg.5-9zlds.41-k1zwg.49-6bk.62-1kw.112-6bk.157-2t4w&limit=50&page={page}&sortId=99"
+        url = raw_url + "page=" + page
         main_driver = parser.driver_init(url)
         ws = wb.active
         add_header(ws)
