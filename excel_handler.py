@@ -46,7 +46,7 @@ def main_excel(dir_path, sheet_num, raw_url):
         wb = Workbook()
         if not os.path.exists(dir_path):
             os.mkdir(dir_path)
-        url = raw_url + "page=" + page
+        url = raw_url + "page=" + str(page)
         main_driver = parser.driver_init(url)
         ws = wb.active
         add_header(ws)
