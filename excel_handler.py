@@ -57,11 +57,11 @@ def main_excel(dir_path, sheet_num, raw_url):
 
 
 def add_header(ws):
-    dict = list(dict_of_tags)
+    dict_of_headers = list(dict_of_tags)
     counter = 0
-    for col in ws.iter_cols(max_row=1, max_col=len(dict)):
+    for col in ws.iter_cols(max_row=1, max_col=len(dict_of_headers)):
         for cell in col:
-            ws.cell(column=cell.column, row=cell.row).value = dict[counter]
+            ws.cell(column=cell.column, row=cell.row).value = dict_of_headers[counter]
             counter += 1
 
 
