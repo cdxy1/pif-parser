@@ -42,6 +42,11 @@ def get_cleaned_elements_from_first_column(soup_object):
     return cleaned_list
 
 
+def check_page_nums(soup_object):
+    nums_of_pages = soup_object.findAll('a', class_='js_pagination item')
+    return nums_of_pages[-1].text
+
+
 def get_cleaned_elements_from_main_table(soup_object, classname):
     lst = []
     raw_html = soup_object.findAll("td", class_=classname)
