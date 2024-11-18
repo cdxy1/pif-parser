@@ -1,8 +1,9 @@
-import openpyxl
-import os
-import excel_handler
 import datetime
+import os
 
+import openpyxl
+
+import excel_handler
 
 """ЗАПУСКАЙТЕ ЭТОТ ФАЙЛ"""
 
@@ -40,5 +41,6 @@ if __name__ == "__main__":
     source_directory = 'excel_files'
     destination_file = 'merged_data'
 
-    excel_handler.main_excel(source_directory, 13)
+    excel_handler.main_excel(source_directory, 14,
+                             "https://investfunds.ru/funds/?showID=99&cstm=0-3y283xa.1-2&cmp=0-423a8.1-zik0zo.2-74.3-1ekg.5-9zlds.9-13ydj4.41-2t4w.49-6bk.62-1kw.90-jz6rk.112-6bk&limit=50&")
     copy_data_to_single_file(source_directory, destination_file)

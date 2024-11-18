@@ -1,4 +1,5 @@
 import os
+
 import bs4
 from selenium import webdriver
 
