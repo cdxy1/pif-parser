@@ -59,7 +59,3 @@ def get_cleaned_elements_from_main_table(soup_object, classname):
             clean_el = " ".join(el.text.split())
             lst.append(clean_el)
     return lst
-
-
-if __name__ == "__main__":
-    pass

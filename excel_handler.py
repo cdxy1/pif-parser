@@ -94,6 +94,3 @@ def main_loop(driver, sheet):
     for i, k in enumerate(dict_of_tags, start=1):
         add_main_table(driver, sheet, dict_of_tags[k], i)
 
-
-if __name__ == "__main__":
-    pass
