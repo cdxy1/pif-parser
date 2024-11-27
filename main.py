@@ -1,10 +1,11 @@
 import os
 import sys
+
 import openpyxl
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QHBoxLayout, QLineEdit, QPushButton, QFileDialog, \
     QLabel, QSpinBox, QMessageBox
 
-import excel_handler  # Убедитесь, что ваш файл excel_handler.py доступен
+import excel_handler
 
 
 class ExcelMergerApp(QWidget):
@@ -16,10 +17,8 @@ class ExcelMergerApp(QWidget):
         self.init_ui()
 
     def init_ui(self):
-        # Основной вертикальный контейнер
         main_layout = QVBoxLayout()
 
-        # Панель для ввода папки источника
         source_layout = QHBoxLayout()
         self.source_label = QLabel("Источник файлов:")
         self.source_input = QLineEdit()

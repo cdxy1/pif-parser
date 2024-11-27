@@ -50,12 +50,23 @@ def check_page_nums(soup_object):
 def get_cleaned_elements_from_main_table(soup_object, classname):
     lst = []
     raw_html = soup_object.findAll("td", class_=classname)
+
     for raw_el in raw_html:
         el = raw_el.find(class_="js_td_width")
-        if el is None:
-            el = "-"
-            lst.append(el)
-        else:
-            clean_el = " ".join(el.text.split())
-            lst.append(clean_el)
+
+        if el:
+            # Если внутри элемента есть изображение
+            img = el.find("img")
+            if img and img.has_attr("title"):
+                lst.append(img["title"])
+            else:
+                clean_el = " ".join(el.text.split())
+                lst.append(clean_el)
+
     return lst
+
+
+# if __name__ == '__main__':
+#     driver = driver_init("https://investfunds.ru/funds/?column_list=0-3y283xa.1-2")
+#     html = get_html(driver)
+#     print(get_cleaned_elements_from_main_table(html, classname="field_funds_comp_name js_swtch_cntrl_visible"))
