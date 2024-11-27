@@ -13,7 +13,7 @@ class ExcelMergerApp(QWidget):
         super().__init__()
         self.setWindowTitle("Обработка Excel файлов")
         self.setGeometry(300, 100, 500, 250)
-        self.setFixedSize(500, 250)  # Фиксированный размер окна
+        self.setFixedSize(500, 250)
         self.init_ui()
 
     def init_ui(self):
@@ -28,32 +28,27 @@ class ExcelMergerApp(QWidget):
         source_layout.addWidget(self.source_input)
         source_layout.addWidget(self.source_button)
 
-        # Панель для ввода URL
         url_layout = QHBoxLayout()
         self.url_label = QLabel("URL для получения данных:")
         self.url_input = QLineEdit()
         url_layout.addWidget(self.url_label)
         url_layout.addWidget(self.url_input)
 
-        # Панель для ввода лимита
         limit_layout = QHBoxLayout()
         self.limit_label = QLabel("Лимит (число):")
         self.limit_input = QSpinBox()
-        self.limit_input.setRange(1, 1000)  # Устанавливаем диапазон для лимита
+        self.limit_input.setRange(1, 1000)
         limit_layout.addWidget(self.limit_label)
         limit_layout.addWidget(self.limit_input)
 
-        # Кнопка выбора места сохранения файла
         dest_layout = QHBoxLayout()
         self.dest_button = QPushButton("Выбрать файл для сохранения")
         self.dest_button.clicked.connect(self.browse_destination_file)
         dest_layout.addWidget(self.dest_button)
 
-        # Кнопка запуска
         self.start_button = QPushButton("Запустить")
         self.start_button.clicked.connect(self.on_start_button_click)
 
-        # Добавление всех панелей на главный layout
         main_layout.addLayout(source_layout)
         main_layout.addLayout(url_layout)
         main_layout.addLayout(limit_layout)
@@ -62,7 +57,6 @@ class ExcelMergerApp(QWidget):
 
         self.setLayout(main_layout)
 
-        # Применение темной темы
         self.setStyleSheet("""
             QWidget {
                 background-color: #2E2E2E;
@@ -99,14 +93,12 @@ class ExcelMergerApp(QWidget):
             self.source_input.setText(folder)
 
     def browse_destination_file(self):
-        # Открываем диалог выбора имени и места сохранения файла
         file_path, _ = QFileDialog.getSaveFileName(self, "Выбрать файл для сохранения", "", "Excel Files (*.xlsx)")
         if file_path:
-            self.destination_file = file_path  # Сохраняем путь к выбранному файлу
+            self.destination_file = file_path
 
     def start_processing(self, source_directory, destination_file, url, limit):
         try:
-            # Запуск excel_handler.main_excel с введенными параметрами
             excel_handler.main_excel(source_directory, limit + 1, url)
             self.copy_data_to_single_file(source_directory, destination_file)
             QMessageBox.information(self, "Успех", "Процесс завершен успешно!")

@@ -64,9 +64,3 @@ def get_cleaned_elements_from_main_table(soup_object, classname):
                 lst.append(clean_el)
 
     return lst
-
-
-# if __name__ == '__main__':
-#     driver = driver_init("https://investfunds.ru/funds/?column_list=0-3y283xa.1-2")
-#     html = get_html(driver)
-#     print(get_cleaned_elements_from_main_table(html, classname="field_funds_comp_name js_swtch_cntrl_visible"))
