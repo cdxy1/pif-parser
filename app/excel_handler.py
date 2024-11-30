@@ -3,7 +3,7 @@ from pathlib import Path
 
 from openpyxl import Workbook
 
-import parser
+from parser import parser
 
 dict_of_tags = {"НАЗВАНИЕ ФОНДА": "",
                 "УПРАВЛЯЮЩАЯ КОМПАНИЯ": "field_funds_comp_name js_swtch_cntrl_visible",
