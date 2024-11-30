@@ -114,7 +114,7 @@ class ExcelMergerApp(QWidget):
             filename = f'invest{i}.xlsx'
             file_path = os.path.join(source_directory, filename)
             if os.path.exists(file_path):
-                source_wb = openpyxl.load_workbook(file_path)
+                source_wb = openpyxl.load_workbook(file_path, read_only=True)
                 source_ws = source_wb.active
                 for row in source_ws.iter_rows(min_row=2, max_row=source_ws.max_row):
                     for cell in row:
