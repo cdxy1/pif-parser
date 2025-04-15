@@ -32,6 +32,8 @@
 
     ```bash
     pip install -r requirements.txt
+    chmod +x ./install.sh # Linux/Mac
+    ./install.sh # Linux/Mac
     ```
 
 ## Использование
@@ -39,7 +41,7 @@
 1. Запустите приложение:
 
     ```bash
-    python main.py
+    python -m src.pif_parser
     ```
 
 2. В интерфейсе:
