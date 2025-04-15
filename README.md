@@ -23,9 +23,9 @@
 2. Создайте и активируйте виртуальное окружение:
 
     ```bash
-    python3 -m venv venv
-    source venv/bin/activate  # Для Linux/macOS
-    venv\Scripts\activate     # Для Windows
+    python3 -m venv .venv
+    source .venv/bin/activate  # Для Linux/macOS
+    .venv\Scripts\activate     # Для Windows
     ```
 
 3. Установите зависимости:
