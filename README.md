@@ -75,23 +75,6 @@ excel-file-merger/
 
 Список зависимостей также можно найти в файле `requirements.txt`.
 
-## Сборка с помощью PyInstaller
-
-Для создания исполняемого файла используйте `PyInstaller`.
-
-1. Установите `PyInstaller`:
-
-    ```bash
-    pip install pyinstaller
-    ```
-
-2. Скомпилируйте приложение:
-
-    ```bash
-    pyinstaller --onefile --windowed main.py
-    ```
-
-3. Получите исполняемый файл в папке `dist/`.
 
 ## Разработчики
 
