@@ -6,7 +6,10 @@ from selenium import webdriver
 
 def driver_init(url):
     if os.name == "posix":
-        driver = webdriver.Safari()
+        try:
+            driver = webdriver.Safari()
+        except Exception:
+            driver = webdriver.Firefox()
         driver.get(url)
         return driver
     else:
@@ -26,12 +29,12 @@ def get_cleaned_elements_from_first_column(soup_object):
     cleaned_list = []
 
     for i in range(1, 51):
-        class_name = f'field_fixed_{i}'
-        row = soup_object.find('tr', class_=class_name)
+        class_name = f"field_fixed_{i}"
+        row = soup_object.find("tr", class_=class_name)
         if row:
-            field_name_element = row.find('td', class_='field_name')
+            field_name_element = row.find("td", class_="field_name")
             if field_name_element:
-                link_element = field_name_element.find('a')
+                link_element = field_name_element.find("a")
                 if link_element and link_element.text not in ignore_list:
                     clean_el = " ".join(link_element.text.split()).strip()
                     if "закрытый" in clean_el:
@@ -43,7 +46,7 @@ def get_cleaned_elements_from_first_column(soup_object):
 
 
 def check_page_nums(soup_object):
-    nums_of_pages = soup_object.findAll('a', class_='js_pagination item')
+    nums_of_pages = soup_object.findAll("a", class_="js_pagination item")
     return nums_of_pages[-1].text
 
 

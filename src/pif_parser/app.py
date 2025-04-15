@@ -1,11 +1,19 @@
 import os
-import sys
 
 import openpyxl
-from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QHBoxLayout, QLineEdit, QPushButton, QFileDialog, \
-    QLabel, QSpinBox, QMessageBox
+from PyQt5.QtWidgets import (
+    QFileDialog,
+    QHBoxLayout,
+    QLabel,
+    QLineEdit,
+    QMessageBox,
+    QPushButton,
+    QSpinBox,
+    QVBoxLayout,
+    QWidget,
+)
 
-import excel_handler
+from src.pif_parser import excel_handler
 
 
 class ExcelMergerApp(QWidget):
@@ -93,7 +101,9 @@ class ExcelMergerApp(QWidget):
             self.source_input.setText(folder)
 
     def browse_destination_file(self):
-        file_path, _ = QFileDialog.getSaveFileName(self, "Выбрать файл для сохранения", "", "Excel Files (*.xlsx)")
+        file_path, _ = QFileDialog.getSaveFileName(
+            self, "Выбрать файл для сохранения", "", "Excel Files (*.xlsx)"
+        )
         if file_path:
             self.destination_file = file_path
 
@@ -111,14 +121,16 @@ class ExcelMergerApp(QWidget):
         current_row = 2
         excel_handler.add_header(dest_ws)
         for i in range(1, 150):
-            filename = f'invest{i}.xlsx'
+            filename = f"invest{i}.xlsx"
             file_path = os.path.join(source_directory, filename)
             if os.path.exists(file_path):
                 source_wb = openpyxl.load_workbook(file_path, read_only=True)
                 source_ws = source_wb.active
                 for row in source_ws.iter_rows(min_row=2, max_row=source_ws.max_row):
                     for cell in row:
-                        dest_ws.cell(row=current_row, column=cell.col_idx, value=cell.value)
+                        dest_ws.cell(
+                            row=current_row, column=cell.col_idx, value=cell.value
+                        )
                     current_row += 1
                 source_wb.close()
         dest_wb.save(f"{destination_file}.xlsx")
@@ -126,17 +138,12 @@ class ExcelMergerApp(QWidget):
 
     def on_start_button_click(self):
         source_directory = self.source_input.text()
-        destination_file = getattr(self, 'destination_file', None)
+        destination_file = getattr(self, "destination_file", None)
         url = self.url_input.text()
         limit = self.limit_input.value()
         if not source_directory or not destination_file or not url:
-            QMessageBox.warning(self, "Предупреждение", "Пожалуйста, заполните все поля.")
+            QMessageBox.warning(
+                self, "Предупреждение", "Пожалуйста, заполните все поля."
+            )
             return
         self.start_processing(source_directory, destination_file, url, limit)
-
-
-if __name__ == "__main__":
-    app = QApplication(sys.argv)
-    window = ExcelMergerApp()
-    window.show()
-    sys.exit(app.exec_())
