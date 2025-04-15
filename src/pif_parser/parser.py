@@ -13,7 +13,7 @@ def driver_init(url):
         driver.get(url)
         return driver
     else:
-        driver = webdriver.Firefox()
+        driver = webdriver.Chrome()
         driver.get(url)
         return driver
 
