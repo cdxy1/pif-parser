@@ -23,9 +23,9 @@
 2. Создайте и активируйте виртуальное окружение:
 
     ```bash
-    python3 -m venv venv
-    source venv/bin/activate  # Для Linux/macOS
-    venv\Scripts\activate     # Для Windows
+    python3 -m venv .venv
+    source .venv/bin/activate  # Для Linux/macOS
+    .venv\Scripts\activate     # Для Windows
     ```
 
 3. Установите зависимости:
@@ -34,6 +34,7 @@
     pip install -r requirements.txt
     chmod +x ./install.sh # Linux/Mac
     ./install.sh # Linux/Mac
+    .\install.ps1 # Windows
     ```
 
 ## Использование
